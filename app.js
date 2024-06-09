@@ -168,4 +168,3 @@ document.addEventListener('DOMContentLoaded', function() {
         itemInput.focus();
     }, 500);
 });
-});
