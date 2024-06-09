@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Selector</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Select Items</h1>
+        <input type="text" id="itemInput" class="form-control" placeholder="Start typing or click to see all items...">
+        <ul id="suggestions" class="list-group mt-2"></ul>
+        <h2 class="mt-4">Selected Items</h2>
+        <ul id="selectedItems" class="list-group"></ul>
+        <button id="copyButton" class="btn btn-primary mt-4">COPY the LIST</button>
+    </div>
+    <script src="app.js"></script>
+    <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./service-worker.js')
+    .then(function(registration) {
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }, function(error) {
+      console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+</script>
+
+</body>
+</html>
