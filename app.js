@@ -163,4 +163,9 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Could not copy text: ', err);
         });
     });
+    // Focus the input field after a short delay
+    setTimeout(() => {
+        itemInput.focus();
+    }, 500);
+});
 });
