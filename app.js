@@ -69,6 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
             "Carrot Bean Coconut Curry",
             "Chicken Fricassé with herb Mayo",
             "Chicken Satay with Penanut Butter Sauce",
+            "Chickpeas Masala",
             "Crumbed Fish Slides with Tartar Sauce",
             "Fettuccinne with Shrimp",
             "Gratin Dauphinois",
