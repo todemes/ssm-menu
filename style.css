@@ -18,7 +18,30 @@ h1, h2 {
     cursor: pointer;
 }
 
+.input-group-append .btn {
+    border: none;
+    background: transparent;
+}
+
+.input-group-append .btn:focus {
+    box-shadow: none;
+}
+
 input[type="text"] {
     position: relative;
     z-index: 10;
+}
+
+.selected-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-button {
+    background: none;
+    border: none;
+    color: red;
+    font-size: 20px;
+    cursor: pointer;
 }

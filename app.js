@@ -1,112 +1,34 @@
 document.addEventListener('DOMContentLoaded', function() {
     const itemInput = document.getElementById('itemInput');
+    const clearButton = document.getElementById('clearButton');
     const suggestions = document.getElementById('suggestions');
     const selectedItems = document.getElementById('selectedItems');
     const copyButton = document.getElementById('copyButton');
 
     const items = [
-            "Beef Pho",
-            "Chilled Jamaican Papaya Soup",
-            "Cream of Broccoli Soup",
-            "Cream of Egg Drop Soup",
-            "Cream of Lentil",
-            "Cream of Mushroom",
-            "Cream of Pumpkin",
-            "Dhal Shorba Soup",
-            "Foccacia Bread",
-            "French Onion Soup with Cheese Toast",
-            "Garudiya Maldivian Tuna Broth",
-            "Italian Minestrone Soup",
-            "Koh Samui Soup",
-            "Lobster Bisque",
-            "Potato Leek Soup",
-            "Red Bean Soup",
-            "Salmon Bouillabaisse",
-            "Seafood Tom Yam",
-            "Spinach Egg Noodle Soup",
-            "Tom Kha Gai",
-            "Vegetable Barley Broth",
-            "Vegetable Egg Noodle Soup",
-            "Vegetable Minestrone Soup",
-            "Vegetable Noodle Soup",
-            "Vegetarian Broth",
-            "Arugula with Balsamic Dressing",
-            "Arugula with Parmesa Shavings",
-            "Arugula with Parmesan & Avocado Wasabi Dressing",
-            "Arugula with Parmesan & Italian Dressing",
-            "Assorted Cheese Platter",
-            "Baby Spinach with Ranch Dressing",
-            "Baby Spinach with Tangerine Dressing",
-            "Beetroot Feta Salad",
-            "Caesar Salad with Prawns",
-            "Carrot Coconut Salad",
-            "Chickpeas Salad",
-            "Coleslaw",
-            "Cucumber Raitha Salad",
-            "Homemade Humus & Pita Bread",
-            "Mediterranean Greek Vegetable Salad",
-            "Mixed Lettuce with Honey Mustard Dressing",
-            "Mixed Lettuce with Lemon Dressing",
-            "Mixed Lettuce with Mustard Dressing",
-            "Mixed Lettuce with Orange Dressing",
-            "Mixed Lettuce with Raspberry Dressing",
-            "Mixed Lettuce with Tangerine Fressing",
-            "Mixed Salad with Avocado Wasabi Dressing",
-            "Mixed Salad with Thousand Island Dressing",
-            "Orange Broccoli Salad",
-            "Pickled Pineapple Salad",
-            "Pineapple Malay Pickled Salad",
-            "Red Cabbage & Green Apple Salad",
-            "Shopska Salad",
-            "Shopska Salad with Feta",
-            "Three Beans Coriander Salad",
-            "Tomato Mozarella Salad",
-            "Tuna Niçoise Salad",
-            "Assorted Vegetables in EVOO",
-            "Aubergine Pahi",
-            "Baked Rosemary Potatoes",
-            "Batter Fried Tiger Prawns with Garlic Mayo",
-            "Carrot Bean Coconut Curry",
-            "Chicken Fricassé with herb Mayo",
-            "Chicken Satay with Penanut Butter Sauce",
-            "Chickpeas Masala",
-            "Crumbed Fish Slides with Tartar Sauce",
-            "Fettuccinne with Shrimp",
-            "Gratin Dauphinois",
-            "Grilled Beef Steak with Blue Cheese",
-            "Local Yam Manioc Tempered",
-            "Lyonnaise Butternut",
-            "Maldivian Tuna Noodles",
-            "Mexican Fried Rice",
-            "Oriental Vegetable Fried Rice",
-            "Pan Fried Chicken Breast with Mushroom Sauce",
-            "Pan Fried Grouper Slices with Red Bean Mousse",
-            "Pasta Dello Chef",
-            "Prawn Fried Rice",
-            "Roasted Lemon Oregano Chicken",
-            "Roasted Pumpkin with Almon Flakes",
-            "Roasted Root Vegetables with EVOO",
-            "Sri Lankan Devilled Chicken",
-            "Steamed Broccoli in EVOO",
-            "Stir Fry Bok Choy with Sesame",
-            "Sultan Ghee Rice",
-            "Teriyaki Salmon",
-            "Vegetable Fried Rice",
-            "Yam Manioc Curry",
-            "Apple Crumble with Vanilla Ice Cream",
-            "Chocolate Mousse",
-            "Churros with Chocolate Sauce",
-            "Cream Caramel",
-            "Crème Brulée",
-            "Live: Banana Flambée with Coconut Ice Cream",
-            "Mahalabia",
-            "Mango Panna Cotta",
-            "Passion Fruit Cheese Cake",
-            "Snow Ginger Cake",
-            "Strawberry Pavlova",
-            "Tiramisu",
-            "Walnut Cheese Cake",
-        ];
+        "Beef Pho", "Chilled Jamaican Papaya Soup", "Cream of Broccoli Soup", "Cream of Egg Drop Soup", "Cream of Lentil",
+        "Cream of Mushroom", "Cream of Pumpkin", "Dhal Shorba Soup", "Foccacia Bread", "French Onion Soup with Cheese Toast",
+        "Garudiya Maldivian Tuna Broth", "Italian Minestrone Soup", "Koh Samui Soup", "Lobster Bisque", "Potato Leek Soup",
+        "Red Bean Soup", "Salmon Bouillabaisse", "Seafood Tom Yam", "Spinach Egg Noodle Soup", "Tom Kha Gai",
+        "Vegetable Barley Broth", "Vegetable Egg Noodle Soup", "Vegetable Minestrone Soup", "Vegetable Noodle Soup",
+        "Vegetarian Broth", "Arugula with Balsamic Dressing", "Arugula with Parmesa Shavings", "Arugula with Parmesan & Avocado Wasabi Dressing",
+        "Arugula with Parmesan & Italian Dressing", "Assorted Cheese Platter", "Baby Spinach with Ranch Dressing", "Baby Spinach with Tangerine Dressing",
+        "Beetroot Feta Salad", "Caesar Salad with Prawns", "Carrot Coconut Salad", "Chickpeas Salad", "Coleslaw",
+        "Cucumber Raitha Salad", "Homemade Humus & Pita Bread", "Mediterranean Greek Vegetable Salad", "Mixed Lettuce with Honey Mustard Dressing",
+        "Mixed Lettuce with Lemon Dressing", "Mixed Lettuce with Mustard Dressing", "Mixed Lettuce with Orange Dressing", "Mixed Lettuce with Raspberry Dressing",
+        "Mixed Lettuce with Tangerine Fressing", "Mixed Salad with Avocado Wasabi Dressing", "Mixed Salad with Thousand Island Dressing",
+        "Orange Broccoli Salad", "Pickled Pineapple Salad", "Pineapple Malay Pickled Salad", "Red Cabbage & Green Apple Salad", "Shopska Salad",
+        "Shopska Salad with Feta", "Three Beans Coriander Salad", "Tomato Mozarella Salad", "Tuna Niçoise Salad", "Assorted Vegetables in EVOO",
+        "Aubergine Pahi", "Baked Rosemary Potatoes", "Batter Fried Tiger Prawns with Garlic Mayo", "Carrot Bean Coconut Curry", "Chicken Fricassé with herb Mayo",
+        "Chicken Satay with Penanut Butter Sauce", "Chickpeas Masala", "Crumbed Fish Slides with Tartar Sauce", "Fettuccinne with Shrimp",
+        "Gratin Dauphinois", "Grilled Beef Steak with Blue Cheese", "Local Yam Manioc Tempered", "Lyonnaise Butternut", "Maldivian Tuna Noodles",
+        "Mexican Fried Rice", "Oriental Vegetable Fried Rice", "Pan Fried Chicken Breast with Mushroom Sauce", "Pan Fried Grouper Slices with Red Bean Mousse",
+        "Pasta Dello Chef", "Prawn Fried Rice", "Roasted Lemon Oregano Chicken", "Roasted Pumpkin with Almon Flakes", "Roasted Root Vegetables with EVOO",
+        "Sri Lankan Devilled Chicken", "Steamed Broccoli in EVOO", "Stir Fry Bok Choy with Sesame", "Sultan Ghee Rice", "Teriyaki Salmon",
+        "Vegetable Fried Rice", "Yam Manioc Curry", "Apple Crumble with Vanilla Ice Cream", "Chocolate Mousse", "Churros with Chocolate Sauce",
+        "Cream Caramel", "Crème Brulée", "Live: Banana Flambée with Coconut Ice Cream", "Mahalabia", "Mango Panna Cotta",
+        "Passion Fruit Cheese Cake", "Snow Ginger Cake", "Strawberry Pavlova", "Tiramisu", "Walnut Cheese Cake"
+    ];
     let selected = [];
 
     itemInput.addEventListener('input', function() {
@@ -118,25 +40,32 @@ document.addEventListener('DOMContentLoaded', function() {
         displaySuggestions('');
     });
 
-    function displaySuggestions(query) {
-    suggestions.innerHTML = '';
-    const filteredItems = items.filter(item => item.toLowerCase().includes(query));
-    filteredItems.forEach(item => {
-        const li = document.createElement('li');
-        li.className = 'list-group-item';
-        li.innerHTML = `<input type="checkbox" value="${item}"> ${item}`;
-        suggestions.appendChild(li);
+    clearButton.addEventListener('click', function() {
+        itemInput.value = '';
+        suggestions.innerHTML = '';
     });
-}
 
-    suggestions.addEventListener('change', function(event) {
-        const checkbox = event.target;
-        if (checkbox.checked) {
-            addItem(checkbox.value);
-        } else {
-            removeItem(checkbox.value);
-        }
-    });
+    function displaySuggestions(query) {
+        suggestions.innerHTML = '';
+        const filteredItems = items.filter(item => item.toLowerCase().includes(query));
+        filteredItems.forEach(item => {
+            const li = document.createElement('li');
+            li.className = 'list-group-item';
+            li.innerHTML = `<input type="checkbox" value="${item}"> ${item}`;
+            li.addEventListener('click', function(event) {
+                if (event.target.tagName !== 'INPUT') {
+                    const checkbox = li.querySelector('input[type="checkbox"]');
+                    checkbox.checked = !checkbox.checked;
+                    if (checkbox.checked) {
+                        addItem(checkbox.value);
+                    } else {
+                        removeItem(checkbox.value);
+                    }
+                }
+            });
+            suggestions.appendChild(li);
+        });
+    }
 
     function addItem(item) {
         selected.push(item);
@@ -146,14 +75,21 @@ document.addEventListener('DOMContentLoaded', function() {
     function removeItem(item) {
         selected = selected.filter(i => i !== item);
         updateSelectedItems();
+        const checkbox = suggestions.querySelector(`input[value="${item}"]`);
+        if (checkbox) {
+            checkbox.checked = false;
+        }
     }
 
     function updateSelectedItems() {
         selectedItems.innerHTML = '';
         selected.forEach(item => {
             const li = document.createElement('li');
-            li.className = 'list-group-item';
-            li.textContent = item;
+            li.className = 'list-group-item selected-item';
+            li.innerHTML = `${item} <button class="delete-button">&times;</button>`;
+            li.querySelector('.delete-button').addEventListener('click', function() {
+                removeItem(item);
+            });
             selectedItems.appendChild(li);
         });
     }
@@ -166,6 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Could not copy text: ', err);
         });
     });
+
     // Focus the input field after a short delay
     setTimeout(() => {
         itemInput.focus();
