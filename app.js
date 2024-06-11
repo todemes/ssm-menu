@@ -5,115 +5,33 @@ document.addEventListener('DOMContentLoaded', function() {
     const copyButton = document.getElementById('copyButton');
 
     const items = [
-                "Beef Pho",
-                "Chilled Jamaican Papaya Soup",
-                "Cream of Broccoli Soup",
-                "Cream of Egg Drop Soup",
-                "Cream of Lentil",
-                "Cream of Mushroom",
-                "Cream of Pumpkin",
-                "Dhal Shorba Soup",
-                "Foccacia Bread",
-                "French Onion Soup with Cheese Toast",
-                "Garudiya Maldivian Tuna Broth",
-                "Italian Minestrone Soup",
-                "Koh Samui Soup",
-                "Lobster Bisque",
-                "Potato Leek Soup",
-                "Red Bean Soup",
-                "Salmon Bouillabaisse",
-                "Seafood Tom Yam",
-                "Spinach Egg Noodle Soup",
-                "Tom Kha Gai",
-                "Vegetable Barley Broth",
-                "Vegetable Egg Noodle Soup",
-                "Vegetable Minestrone Soup",
-                "Vegetable Noodle Soup",
-                "Vegetarian Broth",
-                "Bakery Basket",
-                "Arugula with Balsamic Vinaigrette",
-                "Arugula with Parmesa Shavings",
-                "Arugula with Parmesan & Avocado Wasabi Dressing",
-                "Arugula with Parmesan & Italian Dressing",
-                "Assorted Cheese Platter",
-                "Baby Spinach with Ranch Dressing",
-                "Baby Spinach with Tangerine Dressing",
-                "Beetroot Feta Salad",
-                "Caesar Salad with Prawns",
-                "Carrot Coconut Salad",
-                "Chickpeas Salad",
-                "Coleslaw",
-                "Cucumber Raitha Salad",
-                "Homemade Humus & Pita Bread",
-                "Mediterranean Greek Vegetable Salad",
-                "Mixed Lettuce with Honey Mustard Vinaigrette",
-                "Mixed Lettuce with Lemon Vinaigrette",
-                "Mixed Lettuce with Mustard Vinaigrette",
-                "Mixed Lettuce with Orange Vinaigrette",
-                "Mixed Lettuce with Raspberry Vinaigrette",
-                "Mixed Lettuce with Tangerine Fressing",
-                "Mixed Salad with Avocado Wasabi Dressing",
-                "Mixed Salad with Thousand Island Dressing",
-                "Orange Broccoli Salad",
-                "Pickled Pineapple Salad",
-                "Pineapple Malay Pickled Salad",
-                "Red Cabbage & Green Apple Salad",
-                "Shopska Salad",
-                "Shopska Salad with Feta",
-                "Three Beans Coriander Salad",
-                "Tomato Mozarella Salad",
-                "Tuna Niçoise Salad",
-                "Rojake Salad",
-                "Green Peas Carrot Rice",
-                "Local Beef Stew",
-                "Kerala Seafood Molly",
-                "Cooked Mango Masala",
-                "Assorted Vegetables in EVOO",
-                "Aubergine Pahi",
-                "Baked Rosemary Potatoes",
-                "Batter Fried Tiger Prawns with Garlic Mayo",
-                "Carrot Bean Coconut Curry",
-                "Chicken Fricassé with herb Mayo",
-                "Chicken Satay with Penanut Butter Sauce",
-                "Crumb Fish Slides with Tartar Sauce",
-                "Gratin Dauphinois",
-                "Grilled Beef Steak with Blue Cheese",
-                "Local Yam Manioc Tempered",
-                "Lyonnaise Butternut",
-                "Maldivian Tuna Noodles",
-                "Mexican Fried Rice",
-                "Oriental Vegetable Fried Rice",
-                "Pan Fried Chicken Breast with Mushroom Sauce",
-                "Pan Fried Grouper Slices with Red Bean Mousse",
-                "Pasta Dello Chef",
-                "Prawn Fried Rice",
-                "Roasted Lemon Oregano Chicken",
-                "Roasted Pumpkin with Almon Flakes",
-                "Roasted Root Vegetables with EVOO",
-                "Sri Lankan Devilled Chicken",
-                "Steamed Broccoli in EVOO",
-                "Sultan Ghee Rice",
-                "Teriyaki Salmon",
-                "Vegetable Fried Rice",
-                "Yam Manioc Curry",
-                "Chicken Enchiladas",
-                "Fettuccine with Shrimp",
-                "Crumb-Fried Chicken Slices with Garlic Mayo",
-                "Stir Fry Bok Choy with Sesame",
-                "Chickpeas Masala",
-                "Apple Crumble with Vanilla Ice Cream",
-                "Chocolate Mousse",
-                "Churros with Chocolate Sauce",
-                "Cream Caramel",
-                "Crème Brulée",
-                "Live: Banana Flambée with Coconut Ice Cream",
-                "Mahalabia",
-                "Mango Panna Cotta",
-                "Passion Fruit Cheese Cake",
-                "Snow Ginger Cake",
-                "Strawberry Pavlova",
-                "Tiramisu",
-                "Walnut Cheese Cake"
+        "Beef Pho", "Chilled Jamaican Papaya Soup", "Cream of Broccoli Soup", "Cream of Egg Drop Soup", "Cream of Lentil",
+        "Cream of Mushroom", "Cream of Pumpkin", "Dhal Shorba Soup", "Foccacia Bread", "French Onion Soup with Cheese Toast",
+        "Garudiya Maldivian Tuna Broth", "Italian Minestrone Soup", "Koh Samui Soup", "Lobster Bisque", "Potato Leek Soup",
+        "Red Bean Soup", "Salmon Bouillabaisse", "Seafood Tom Yam", "Spinach Egg Noodle Soup", "Tom Kha Gai",
+        "Vegetable Barley Broth", "Vegetable Egg Noodle Soup", "Vegetable Minestrone Soup", "Vegetable Noodle Soup",
+        "Vegetarian Broth", "Bakery Basket", "Arugula with Balsamic Vinaigrette", "Arugula with Parmesa Shavings",
+        "Arugula with Parmesan & Avocado Wasabi Dressing", "Arugula with Parmesan & Italian Dressing", "Assorted Cheese Platter",
+        "Baby Spinach with Ranch Dressing", "Baby Spinach with Tangerine Dressing", "Beetroot Feta Salad", "Caesar Salad with Prawns",
+        "Carrot Coconut Salad", "Chickpeas Salad", "Coleslaw", "Cucumber Raitha Salad", "Homemade Humus & Pita Bread",
+        "Mediterranean Greek Vegetable Salad", "Mixed Lettuce with Honey Mustard Vinaigrette", "Mixed Lettuce with Lemon Vinaigrette",
+        "Mixed Lettuce with Mustard Vinaigrette", "Mixed Lettuce with Orange Vinaigrette", "Mixed Lettuce with Raspberry Vinaigrette",
+        "Mixed Lettuce with Tangerine Fressing", "Mixed Salad with Avocado Wasabi Dressing", "Mixed Salad with Thousand Island Dressing",
+        "Orange Broccoli Salad", "Pickled Pineapple Salad", "Pineapple Malay Pickled Salad", "Red Cabbage & Green Apple Salad",
+        "Shopska Salad", "Shopska Salad with Feta", "Three Beans Coriander Salad", "Tomato Mozarella Salad", "Tuna Niçoise Salad",
+        "Rojake Salad", "Green Peas Carrot Rice", "Local Beef Stew", "Kerala Seafood Molly", "Cooked Mango Masala",
+        "Assorted Vegetables in EVOO", "Aubergine Pahi", "Baked Rosemary Potatoes", "Batter Fried Tiger Prawns with Garlic Mayo",
+        "Carrot Bean Coconut Curry", "Chicken Fricassé with herb Mayo", "Chicken Satay with Penanut Butter Sauce",
+        "Crumb Fish Slides with Tartar Sauce", "Gratin Dauphinois", "Grilled Beef Steak with Blue Cheese", "Local Yam Manioc Tempered",
+        "Lyonnaise Butternut", "Maldivian Tuna Noodles", "Mexican Fried Rice", "Oriental Vegetable Fried Rice",
+        "Pan Fried Chicken Breast with Mushroom Sauce", "Pan Fried Grouper Slices with Red Bean Mousse", "Pasta Dello Chef",
+        "Prawn Fried Rice", "Roasted Lemon Oregano Chicken", "Roasted Pumpkin with Almon Flakes", "Roasted Root Vegetables with EVOO",
+        "Sri Lankan Devilled Chicken", "Steamed Broccoli in EVOO", "Sultan Ghee Rice", "Teriyaki Salmon", "Vegetable Fried Rice",
+        "Yam Manioc Curry", "Chicken Enchiladas", "Fettuccine with Shrimp", "Crumb-Fried Chicken Slices with Garlic Mayo",
+        "Stir Fry Bok Choy with Sesame", "Chickpeas Masala", "Apple Crumble with Vanilla Ice Cream", "Chocolate Mousse",
+        "Churros with Chocolate Sauce", "Cream Caramel", "Crème Brulée", "Live: Banana Flambée with Coconut Ice Cream",
+        "Mahalabia", "Mango Panna Cotta", "Passion Fruit Cheese Cake", "Snow Ginger Cake", "Strawberry Pavlova",
+        "Tiramisu", "Walnut Cheese Cake"
     ];
     let selected = [];
 
@@ -125,13 +43,6 @@ document.addEventListener('DOMContentLoaded', function() {
     itemInput.addEventListener('focus', function() {
         displaySuggestions('');
         suggestions.style.display = 'block'; // Show suggestions when the input field is focused
-    });
-
-    itemInput.addEventListener('blur', function() {
-        // Delay hiding suggestions to allow click events to register
-        setTimeout(() => {
-            suggestions.style.display = 'none';
-        }, 200);
     });
 
     function displaySuggestions(query) {
@@ -207,8 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Focus the input field after a short delay
-    setTimeout(() => {
-        itemInput.focus();
-    }, 500);
+    // Show suggestions by default
+    displaySuggestions('');
+    suggestions.style.display = 'block';
 });
