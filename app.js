@@ -124,6 +124,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     itemInput.addEventListener('focus', function() {
+        if (itemInput.dataset.preventClear !== "true") {
+            itemInput.value = '';
+        }
+        itemInput.dataset.preventClear = "false";
         displaySuggestions('');
     });
 
@@ -138,20 +142,27 @@ document.addEventListener('DOMContentLoaded', function() {
         filteredItems.forEach(item => {
             const li = document.createElement('li');
             li.className = 'list-group-item';
-            li.innerHTML = `<input type="checkbox" value="${item}"> ${item}`;
-            li.addEventListener('click', function(event) {
-                if (event.target.tagName !== 'INPUT') {
-                    const checkbox = li.querySelector('input[type="checkbox"]');
-                    checkbox.checked = !checkbox.checked;
-                    if (checkbox.checked) {
-                        addItem(checkbox.value);
-                    } else {
-                        removeItem(checkbox.value);
-                    }
-                }
+            li.textContent = item;
+            li.addEventListener('click', function() {
+                toggleItem(item, li);
+                itemInput.dataset.preventClear = "true";
+                itemInput.focus();
             });
+            if (selected.includes(item)) {
+                li.classList.add('selected');
+            }
             suggestions.appendChild(li);
         });
+    }
+
+    function toggleItem(item, li) {
+        if (selected.includes(item)) {
+            removeItem(item);
+            li.classList.remove('selected');
+        } else {
+            addItem(item);
+            li.classList.add('selected');
+        }
     }
 
     function addItem(item) {
@@ -162,10 +173,12 @@ document.addEventListener('DOMContentLoaded', function() {
     function removeItem(item) {
         selected = selected.filter(i => i !== item);
         updateSelectedItems();
-        const checkbox = suggestions.querySelector(`input[value="${item}"]`);
-        if (checkbox) {
-            checkbox.checked = false;
-        }
+        const suggestionItems = Array.from(suggestions.children);
+        suggestionItems.forEach(suggestionItem => {
+            if (suggestionItem.textContent.trim() === item) {
+                suggestionItem.classList.remove('selected');
+            }
+        });
     }
 
     function updateSelectedItems() {
@@ -176,6 +189,12 @@ document.addEventListener('DOMContentLoaded', function() {
             li.innerHTML = `${item} <button class="delete-button">&times;</button>`;
             li.querySelector('.delete-button').addEventListener('click', function() {
                 removeItem(item);
+                const suggestionItems = Array.from(suggestions.children);
+                suggestionItems.forEach(suggestionItem => {
+                    if (suggestionItem.textContent.trim() === item) {
+                        suggestionItem.classList.remove('selected');
+                    }
+                });
             });
             selectedItems.appendChild(li);
         });

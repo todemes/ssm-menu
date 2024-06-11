@@ -45,3 +45,7 @@ input[type="text"] {
     font-size: 20px;
     cursor: pointer;
 }
+
+.selected {
+    background-color: #d4edda;
+}
