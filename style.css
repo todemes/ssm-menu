@@ -11,6 +11,7 @@ h1, h2 {
 #suggestions {
     max-height: 200px;
     overflow-y: auto;
+    display: none;
 }
 
 #suggestions li:hover {
@@ -36,12 +37,20 @@ input[type="text"] {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 5px;
+    margin: 2px 0;
+    line-height: 2px
+
 }
 
 .delete-button {
     background: none;
     border: none;
     color: red;
-    font-size: 20px;
+    font-size: 16px;
     cursor: pointer;
+}
+
+.selected {
+    background-color: #d4edda;
 }
