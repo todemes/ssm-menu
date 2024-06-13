@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
             addLi.className = 'list-group-item';
             addLi.innerHTML = `Add "${query}"`;
             addLi.addEventListener('click', function() {
-                addItem(query);
+                addItem(`*${query}`);
                 itemInput.value = '';
                 suggestions.innerHTML = '';
             });
