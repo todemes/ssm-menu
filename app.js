@@ -51,22 +51,35 @@ document.addEventListener('DOMContentLoaded', function() {
             return (currentFilter === 'all' || item.type === currentFilter) && item.name.toLowerCase().includes(query);
         });
         console.log('Filtered items:', filteredItems); // Debug: Log filtered items
-        filteredItems.forEach(item => {
-            const li = document.createElement('li');
-            li.className = 'list-group-item';
-            li.innerHTML = `<input type="checkbox" value="${item.name}"> ${item.name}`;
-            li.addEventListener('click', function(event) {
-                event.stopPropagation();
-                const checkbox = li.querySelector('input[type="checkbox"]');
-                toggleItem(item.name, li, checkbox);
+
+        if (filteredItems.length === 0 && query.length > 0) {
+            const addLi = document.createElement('li');
+            addLi.className = 'list-group-item';
+            addLi.innerHTML = `Add "${query}"`;
+            addLi.addEventListener('click', function() {
+                addItem(query);
                 itemInput.value = '';
+                suggestions.innerHTML = '';
             });
-            if (selected.includes(item.name)) {
-                li.querySelector('input[type="checkbox"]').checked = true;
-                li.classList.add('selected');
-            }
-            suggestions.appendChild(li);
-        });
+            suggestions.appendChild(addLi);
+        } else {
+            filteredItems.forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'list-group-item';
+                li.innerHTML = `<input type="checkbox" value="${item.name}"> ${item.name}`;
+                li.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    const checkbox = li.querySelector('input[type="checkbox"]');
+                    toggleItem(item.name, li, checkbox);
+                    itemInput.value = '';
+                });
+                if (selected.includes(item.name)) {
+                    li.querySelector('input[type="checkbox"]').checked = true;
+                    li.classList.add('selected');
+                }
+                suggestions.appendChild(li);
+            });
+        }
     }
 
     function toggleItem(item, li, checkbox) {
