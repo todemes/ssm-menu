@@ -8,6 +8,16 @@ h1, h2 {
     color: #007bff;
 }
 
+#filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.filter-btn {
+    cursor: pointer;
+}
+
 #suggestions {
     max-height: 200px;
     overflow-y: auto;
