@@ -24,7 +24,7 @@
     { "name": "Vegetable Minestrone Soup", "type": "soup" },
     { "name": "Vegetable Noodle Soup", "type": "soup" },
     { "name": "Vegetarian Broth", "type": "soup" },
-    { "name": "Bakery Basket", "type": "soup" }
+    { "name": "Bakery Basket", "type": "soup" },
     { "name": "Arugula with Balsamic Vinaigrette", "type": "salad" },
     { "name": "Arugula with Parmesan Shavings", "type": "salad" },
     { "name": "Arugula with Parmesan & Avocado Wasabi Dressing", "type": "salad" },
@@ -59,7 +59,7 @@
     { "name": "Tuna Niçoise Salad", "type": "salad" },
     { "name": "Rojake Salad", "type": "salad" },
     { "name": "Green Peas Carrot Rice", "type": "salad" },
-    { "name": "Tomato Asparagus Salad", "type": "salad" }
+    { "name": "Tomato Asparagus Salad", "type": "salad" },
     { "name": "Assorted Vegetables in EVOO", "type": "main" },
     { "name": "Aubergine Pahi", "type": "main" },
     { "name": "Baked Rosemary Potatoes", "type": "main" },
@@ -104,7 +104,7 @@
     { "name": "Sauce Bolognaise, Aglio e Olio, Tomato", "type": "main" },
     { "name": "Scallops with White Wine Dill Sauce", "type": "main" },
     { "name": "French Fries with Ketchup", "type": "main" },
-    { "name": "Penne with Baked Avocado Mousse", "type": "main" }
+    { "name": "Penne with Baked Avocado Mousse", "type": "main" },
     { "name": "Apple Crumble with Vanilla Ice Cream", "type": "dessert" },
     { "name": "Chocolate Mousse", "type": "dessert" },
     { "name": "Churros with Chocolate Sauce", "type": "dessert" },
