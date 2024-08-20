@@ -4,27 +4,36 @@ document.addEventListener('DOMContentLoaded', function() {
     const selectedItems = document.getElementById('selectedItems');
     const copyButton = document.getElementById('copyButton');
     const filterButtons = document.querySelectorAll('.filter-btn');
+
     let items = [];
-    let wordsSet = new Set();
     let currentFilter = 'all';
     let selected = [];
 
     // Fetch items from items.json
     fetch('items.json')
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
             items = data;
-            preprocessItems(data);
+            console.log('Items loaded:', items); // Debug: Log the items loaded
             displaySuggestions('');
         })
-        .catch(error => console.error('Error fetching items:', error));
-
-    function preprocessItems(items) {
-        items.forEach(item => {
-            const words = item.name.toLowerCase().split(' ');
-            words.forEach(word => wordsSet.add(word));
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
         });
-    }
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            currentFilter = this.getAttribute('data-filter');
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            displaySuggestions(itemInput.value.toLowerCase());
+        });
+    });
 
     itemInput.addEventListener('input', function() {
         const query = itemInput.value.toLowerCase();
@@ -38,22 +47,80 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function displaySuggestions(query) {
         suggestions.innerHTML = '';
-        const queryWords = query.split(' ');
-
-        // Suggest words based on input
-        const suggestedWords = Array.from(wordsSet).filter(word => {
-            return word.startsWith(queryWords[queryWords.length - 1]);
+        const filteredItems = items.filter(item => {
+            return (currentFilter === 'all' || item.type === currentFilter) && item.name.toLowerCase().includes(query);
         });
+        console.log('Filtered items:', filteredItems); // Debug: Log filtered items
 
-        suggestedWords.forEach(word => {
-            const li = document.createElement('li');
-            li.className = 'list-group-item';
-            li.innerHTML = word;
-            li.addEventListener('click', function() {
-                itemInput.value = itemInput.value.replace(/[^ ]*$/, word);
+        if (filteredItems.length === 0 && query.length > 0) {
+            const addLi = document.createElement('li');
+            addLi.className = 'list-group-item';
+            addLi.innerHTML = `Add "${query}"`;
+            addLi.addEventListener('click', function() {
+                addItem(`*${query}`);
+                itemInput.value = '';
                 suggestions.innerHTML = '';
             });
-            suggestions.appendChild(li);
+            suggestions.appendChild(addLi);
+        } else {
+            filteredItems.forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'list-group-item';
+                li.innerHTML = `<input type="checkbox" value="${item.name}"> ${item.name}`;
+                li.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    const checkbox = li.querySelector('input[type="checkbox"]');
+                    toggleItem(item.name, li, checkbox);
+                    itemInput.value = '';
+                });
+                if (selected.includes(item.name)) {
+                    li.querySelector('input[type="checkbox"]').checked = true;
+                    li.classList.add('selected');
+                }
+                suggestions.appendChild(li);
+            });
+        }
+    }
+
+    function toggleItem(item, li, checkbox) {
+        if (selected.includes(item)) {
+            removeItem(item);
+            li.classList.remove('selected');
+            checkbox.checked = false;
+        } else {
+            addItem(item);
+            li.classList.add('selected');
+            checkbox.checked = true;
+        }
+    }
+
+    function addItem(item) {
+        selected.push(item);
+        updateSelectedItems();
+    }
+
+    function removeItem(item) {
+        selected = selected.filter(i => i !== item);
+        updateSelectedItems();
+    }
+
+    function updateSelectedItems() {
+        selectedItems.innerHTML = '';
+        selected.forEach(item => {
+            const li = document.createElement('li');
+            li.className = 'list-group-item selected-item';
+            li.innerHTML = `${item} <button class="delete-button" style="color: red;">&times;</button>`;
+            li.querySelector('.delete-button').addEventListener('click', function() {
+                removeItem(item);
+                const suggestionItems = Array.from(suggestions.children);
+                suggestionItems.forEach(suggestionItem => {
+                    if (suggestionItem.textContent.trim() === item) {
+                        suggestionItem.querySelector('input[type="checkbox"]').checked = false;
+                        suggestionItem.classList.remove('selected');
+                    }
+                });
+            });
+            selectedItems.appendChild(li);
         });
     }
 
